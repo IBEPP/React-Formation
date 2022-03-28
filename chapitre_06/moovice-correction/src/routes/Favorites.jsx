@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Card } from '../components/Card';
 
 export class Favorites extends React.Component {
     
@@ -60,10 +61,13 @@ export class Favorites extends React.Component {
         
         return (
             <>
+            {this.state.movies.map( movie => {
+                return <Card key={movie.id} title={movie.title} image={movie.poster_path} descritpion={movie.overview} year={movie.release_date}/>
+            })}
             <h1 onClick={ () => (this.getMovie(500))}>Favorites</h1>
             {/* onClick={this.getMovie(500)} */}
             {/* {this.componentDidMount()} */}
-            {this.getStorage()} 
+            {/* {this.getStorage()} */}
             {/* {localStorage.getItem('favorites')} */}
             {/* <h1 onClick={ () => ( this.componentDidMount())}> Salut </h1> */}
         </>
